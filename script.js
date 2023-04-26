@@ -70,3 +70,22 @@ const keyboardKeys = [
   ['Ctrl', 'Ctrl']
 
 ];
+
+const header = document.createElement('header');
+header.className = 'header';
+header.innerHTML = 'Виртуальная клавиатура';
+document.body.prepend(header);
+
+const textarea = document.createElement('textarea');
+textarea.className = 'textarea';
+textarea.placeholder = '[ Hello! Enter something ]';
+header.after(textarea);
+
+const keyboard = document.createElement('div');
+keyboard.className = 'keyboard';
+textarea.after(keyboard);
+
+const footer = document.createElement('footer');
+footer.className = 'footer';
+footer.innerHTML = 'Клавиатура создана в операционной системе Windows<br>Для переключения языка комбинация: левые ctrl + alt';
+document.body.append(footer);

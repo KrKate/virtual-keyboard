@@ -27,6 +27,13 @@
 .key:active {
     border-radius: 20px;
     background-color: #476f93;
+    font-size: 20px;
+}
+
+.active {
+    border-radius: 20px;
+    background-color: #476f93;
+    font-size: 20px;
 }
 
 .keyboard {
@@ -55,22 +62,22 @@
     border-radius: 4px;
 }
 
-.key#space {
+.key.space {
     width: 400px;
 }
 
-.key#capslock,
-.key#shift-right,
-.key#shift-left,
-.key#enter {
+.key.capslock,
+.key.shiftright,
+.key.shiftleft,
+.key.enter {
     width: 100px;
 }
 
-.key#backspace {
+.key.backspace {
     width: 120px;
 }
 
-.key#tab,
-.key#del {
+.key.tab,
+.key.delete {
     width: 60px;
 }

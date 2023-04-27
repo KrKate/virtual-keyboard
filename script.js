@@ -1,73 +1,73 @@
 const keyboardKeys = [
 
-  ['`', 'ё'],
-  ['1', '1'],
-  ['2', '2'],
-  ['3', '3'],
-  ['4', '4'],
-  ['5', '5'],
-  ['6', '6'],
-  ['7', '7'],
-  ['8', '8'],
-  ['9', '9'],
-  ['0', '0'],
-  ['-', '-'],
-  ['=', '='],
-  ['Backspace', 'Baskspace'],
+  ['backtick','`', 'ё'],
+  ['one','1', '1'],
+  ['two','2', '2'],
+  ['three','3', '3'],
+  ['four','4', '4'],
+  ['five','5', '5'],
+  ['six','6', '6'],
+  ['seven','7', '7'],
+  ['eight','8', '8'],
+  ['nine','9', '9'],
+  ['zero','0', '0'],
+  ['huphen','-', '-'],
+  ['equals','=', '='],
+  ['backspace','Backspace', 'Baskspace'],
 
-  ['Tab', 'Tab'],
-  ['q', 'й'],
-  ['w', 'ц'],
-  ['e', 'у'],
-  ['r', 'к'],
-  ['t', 'е'],
-  ['y', 'н'],
-  ['u', 'г'],
-  ['i', 'ш'],
-  ['o', 'щ'],
-  ['p', 'з'],
-  ['[', 'х'],
-  [']', 'ъ'],
-  ['\\', '3'],
-  ['Del', 'Del'],
+  ['tab','Tab', 'Tab'],
+  ['qKey','q', 'й'],
+  ['wKey','w', 'ц'],
+  ['eKey','e', 'у'],
+  ['rKey','r', 'к'],
+  ['tKey','t', 'е'],
+  ['yKey','y', 'н'],
+  ['uKey','u', 'г'],
+  ['iKey','i', 'ш'],
+  ['oKey','o', 'щ'],
+  ['pKey','p', 'з'],
+  ['square-bracket-right','[', 'х'],
+  ['square-bracket-left',']', 'ъ'],
+  ['slash-left','\\', '3'],
+  ['del','Del', 'Del'],
 
-  ['CapsLock', 'CapsLock'],
-  ['a', 'ф'],
-  ['s', 'ы'],
-  ['d', 'в'],
-  ['f', 'а'],
-  ['g', 'п'],
-  ['h', 'р'],
-  ['j', 'о'],
-  ['k', 'л'],
-  ['l', 'д'],
+  ['capslock','CapsLock', 'CapsLock'],
+  ['aKey','a', 'ф'],
+  ['sKey','s', 'ы'],
+  ['dKey','d', 'в'],
+  ['fKey','f', 'а'],
+  ['gKey','g', 'п'],
+  ['hKey','h', 'р'],
+  ['jKey','j', 'о'],
+  ['kKey','k', 'л'],
+  ['lKey','l', 'д'],
   [';', 'ж'],
   ["'", 'э'],
-  ['Enter', 'Enter'],
+  ['enter','Enter', 'Enter'],
 
-  ['Shift', 'Shift'],
-  ['z', 'я'],
-  ['x', 'ч'],
-  ['c', 'с'],
-  ['v', 'м'],
-  ['b', 'и'],
-  ['n', 'т'],
-  ['m', 'ь'],
-  [',', 'б'],
-  ['.', 'ю'],
-  ['/', '.'],
-  ['&#9650;', '&#9650;'],
-  ['Shift', 'Shift'],
+  ['shift-left','Shift', 'Shift'],
+  ['zKey','z', 'я'],
+  ['xKey','x', 'ч'],
+  ['cKey','c', 'с'],
+  ['vKey','v', 'м'],
+  ['bKey','b', 'и'],
+  ['nKey','n', 'т'],
+  ['mKey','m', 'ь'],
+  ['comma',',', 'б'],
+  ['dot','.', 'ю'],
+  ['slash-right','/', '.'],
+  ['up','&#9650;', '&#9650;'],
+  ['shift-right','Shift', 'Shift'],
 
-  ['Ctrl', 'Ctrl'],
+  ['ctrl-left','Ctrl', 'Ctrl'],
   ['Win', 'Win'],
-  ['Alt', 'Alt'],
-  ['Space', 'Space'],
-  ['Alt', 'Alt'],
-  ['&#9668;', '&#9668;'],
-  ['&#9660;', '&#9660'],
-  ['&#9660;', '&#9660'],
-  ['Ctrl', 'Ctrl']
+  ['alt-left','Alt', 'Alt'],
+  [ 'space','Space', 'Space'],
+  ['alt-right', 'Alt', 'Alt'],
+  ['left','&#9668;', '&#9668;'],
+  ['down', '&#9660;', '&#9660'],
+  ['right','&#9660;', '&#9660'],
+  ['ctrl-right','Ctrl', 'Ctrl']
 
 ];
 
@@ -79,6 +79,7 @@ document.body.prepend(header);
 const textarea = document.createElement('textarea');
 textarea.className = 'textarea';
 textarea.placeholder = '[ Hello! Enter something ]';
+textarea.autofocus = true;
 header.after(textarea);
 
 const keyboard = document.createElement('div');
@@ -116,35 +117,40 @@ function createKeyboard() {
     row1.append(key);
     row1.classList = 'row';
     key.className = 'key';
-    key.innerHTML = keyboardKeys[i][0];
+    key.id = keyboardKeys[i][0];
+    key.innerHTML = keyboardKeys[i][1];
   }
   for (let i = 14; i < 29; i += 1) {
     const key = document.createElement('span');
     row2.append(key);
     row2.classList = 'row';
     key.className = 'key';
-    key.innerHTML = keyboardKeys[i][0];
+    key.id = keyboardKeys[i][0];
+    key.innerHTML = keyboardKeys[i][1];
   }
   for (let i = 29; i < 42; i += 1) {
     const key = document.createElement('span');
     row3.append(key);
     row3.classList = 'row';
     key.className = 'key';
-    key.innerHTML = keyboardKeys[i][0];
+    key.id = keyboardKeys[i][0];
+    key.innerHTML = keyboardKeys[i][1];
   }
   for (let i = 42; i < 55; i += 1) {
     const key = document.createElement('span');
     row4.append(key);
     row4.classList = 'row';
     key.className = 'key';
-    key.innerHTML = keyboardKeys[i][0];
+    key.id = keyboardKeys[i][0];
+    key.innerHTML = keyboardKeys[i][1];
   }
   for (let i = 55; i < 64; i += 1) {
     const key = document.createElement('span');
     row5.append(key);
     row5.classList = 'row';
     key.className = 'key';
-    key.innerHTML = keyboardKeys[i][0];
+    key.id = keyboardKeys[i][0];
+    key.innerHTML = keyboardKeys[i][1];
   }
 }
 

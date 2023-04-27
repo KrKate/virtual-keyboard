@@ -89,3 +89,10 @@ const footer = document.createElement('footer');
 footer.className = 'footer';
 footer.innerHTML = 'Клавиатура создана в операционной системе Windows<br>Для переключения языка комбинация: левые ctrl + alt';
 document.body.append(footer);
+
+
+function createKeyboard() {
+    for (let i=0; i<keyboardKeys.length; i+=1) {
+        
+    }
+}

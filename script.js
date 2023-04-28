@@ -160,16 +160,6 @@ createKeyboard();
 
 /// //////////////////////////////////////////////////////////////////////////////
 
-// document.addEventListener('keydown', (event) => {
-//   console.log(event.code);
-//   for (let i=0; i<keyboardKeys; i++) {
-//     if(event.code === keyboardKeys[i][0]) {
-//       let key = keyboardKeys[i][0].toLowerCase().replace('key', 'key-');
-//       document.querySelector(`.${key}`).classList.add('active');
-//     }
-//   }
-// });
-
 document.addEventListener('keydown', (event) => {
   for (let i = 0; i < keyboardKeys.length; i += 1) {
     if (event.code === keyboardKeys[i][0]) {
@@ -177,6 +167,7 @@ document.addEventListener('keydown', (event) => {
       document.querySelector(`.${button}`).classList.add('active');
     }
   }
+  textarea.focus();
 });
 
 document.addEventListener('keyup', (event) => {
@@ -187,3 +178,4 @@ document.addEventListener('keyup', (event) => {
     }
   }
 });
+

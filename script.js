@@ -71,6 +71,7 @@ const keyboardKeys = [
 
 ];
 
+// Создаю элементы страницы
 const header = document.createElement('header');
 header.className = 'header';
 header.innerHTML = 'Виртуальная клавиатура';
@@ -111,9 +112,8 @@ footer.className = 'footer';
 footer.innerHTML = 'Клавиатура создана в операционной системе Windows<br>Для переключения языка комбинация: левые ctrl + alt';
 document.body.append(footer);
 
-/// ///////////////////////////////////////////////////////////////////////////
-
-function createKeyboard() {
+// Создаю клавиши клавиатуры
+function createKeyboard(currentLang) {
   for (let i = 0; i < 14; i += 1) {
     const key = document.createElement('span');
     row1.append(key);
@@ -158,8 +158,7 @@ function createKeyboard() {
 
 createKeyboard();
 
-/// //////////////////////////////////////////////////////////////////////////////
-
+// Связываю нажатие на реальной клавиатуре с нажатием на виртуальной клавиатуре
 document.addEventListener('keydown', (event) => {
   for (let i = 0; i < keyboardKeys.length; i += 1) {
     if (event.code === keyboardKeys[i][0]) {
@@ -179,3 +178,15 @@ document.addEventListener('keyup', (event) => {
   }
 });
 
+/// /////////////////////////////////////////////////////////////////////
+console.log(textarea);
+// textarea.value = 'hello';
+document.addEventListener('mousedown', (event) =>{
+  for (let i = 0; i < keyboardKeys.length; i += 1) {
+    console.log(keyboardKeys[i][0]);
+    console.log(event.target.id);
+    if (event.target.id === keyboardKeys[i][0]) {
+      textarea.value += keyboardKeys[i][1];
+    }
+  }
+});

@@ -164,9 +164,11 @@ createKeyboard();
 //Связываю нажатие на реальной клавиатуре с нажатием на виртуальной клавиатуре
 document.addEventListener('keydown', (event) => {
   for (let i = 0; i < keyboardKeys.length; i += 1) {
-    if (event.code === keyboardKeys[i][0]) {
+    event.preventDefault();
+    if (event.code === keyboardKeys[i][0] && event.code !== 'Tab' && event.code !== 'Space') {
       const button = keyboardKeys[i][0].toLowerCase().replace('key', 'key-');
       document.querySelector(`.${button}`).classList.add('active');
+      textarea.value += keyboardKeys[i][1];
     }
   }
   textarea.focus();
@@ -183,13 +185,13 @@ document.addEventListener('keyup', (event) => {
 
 //Связываю нажатие мышкой кнопок виртуальной клавиатуры с выводом символов в textarea
 //Не писать в этой функции спецклавиши! Повторяются length раз!
-console.log(textarea)
+// console.log(textarea)
 // textarea.value = 'hello';
 document.addEventListener('mousedown', (event) =>{
   for (let i = 0; i < keyboardKeys.length; i += 1) {
-    console.log(keyboardKeys[i][0])
-    console.log(event.target.id)
-    if(event.target.id === keyboardKeys[i][0] && event.target.id !== 'Space') {
+    // console.log(keyboardKeys[i][0])
+    // console.log(event.target.id)
+    if(event.target.id === keyboardKeys[i][0] && event.target.id !== 'Space' && event.target.id !== 'Tab') {
       textarea.value += keyboardKeys[i][1];
     }
   }
@@ -198,7 +200,30 @@ document.addEventListener('mousedown', (event) =>{
 
 //Нажатие мышкой виртуального пробела
 document.addEventListener('mousedown', (event) =>{
-    if(event.target.id === 'Space') {
+  if(event.target.id === 'Space') {
+    textarea.value += ' ';
+  }
+})
+
+//Нажатие пробела на реальной клавиатуре
+document.addEventListener('keydown', (event) =>{
+    if(event.code === 'Space') {
       textarea.value += ' ';
+      document.querySelector('#Space').classList.add('active');
     }
+})
+
+//Нажатие мышкой виртуального Tab
+document.addEventListener('mousedown', (event) =>{
+  if(event.target.id === 'Tab') {
+    textarea.value += '    ';
+  }
+})
+
+//Нажатие Тab на реальной клавиатуре
+document.addEventListener('keydown', (event) =>{
+  if(event.code === 'Tab') {
+    textarea.value += '    ';
+    document.querySelector('#Tab').classList.add('active');
+  }
 })

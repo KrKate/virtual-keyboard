@@ -30,6 +30,10 @@
     font-size: 20px;
 }
 
+.key:hover {
+    background-color: #476f93;
+}
+
 .active {
     border-radius: 20px;
     background-color: #476f93;

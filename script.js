@@ -71,7 +71,7 @@ const keyboardKeys = [
 
 ];
 
-// Создаю элементы страницы
+//Создаю элементы страницы
 const header = document.createElement('header');
 header.className = 'header';
 header.innerHTML = 'Виртуальная клавиатура';
@@ -112,7 +112,9 @@ footer.className = 'footer';
 footer.innerHTML = 'Клавиатура создана в операционной системе Windows<br>Для переключения языка комбинация: левые ctrl + alt';
 document.body.append(footer);
 
-// Создаю клавиши клавиатуры
+
+
+//Создаю клавиши клавиатуры
 function createKeyboard(currentLang) {
   for (let i = 0; i < 14; i += 1) {
     const key = document.createElement('span');
@@ -158,7 +160,8 @@ function createKeyboard(currentLang) {
 
 createKeyboard();
 
-// Связываю нажатие на реальной клавиатуре с нажатием на виртуальной клавиатуре
+
+//Связываю нажатие на реальной клавиатуре с нажатием на виртуальной клавиатуре
 document.addEventListener('keydown', (event) => {
   for (let i = 0; i < keyboardKeys.length; i += 1) {
     if (event.code === keyboardKeys[i][0]) {
@@ -178,15 +181,24 @@ document.addEventListener('keyup', (event) => {
   }
 });
 
-/// /////////////////////////////////////////////////////////////////////
-console.log(textarea);
+//Связываю нажатие мышкой кнопок виртуальной клавиатуры с выводом символов в textarea
+//Не писать в этой функции спецклавиши! Повторяются length раз!
+console.log(textarea)
 // textarea.value = 'hello';
 document.addEventListener('mousedown', (event) =>{
   for (let i = 0; i < keyboardKeys.length; i += 1) {
-    console.log(keyboardKeys[i][0]);
-    console.log(event.target.id);
-    if (event.target.id === keyboardKeys[i][0]) {
+    console.log(keyboardKeys[i][0])
+    console.log(event.target.id)
+    if(event.target.id === keyboardKeys[i][0] && event.target.id !== 'Space') {
       textarea.value += keyboardKeys[i][1];
     }
   }
-});
+})
+//TODO: Backspace, Tab, Del, CapsLock, Enter, Shift, Ctrl, Win, Alt, Space, стрелки
+
+//Нажатие мышкой виртуального пробела
+document.addEventListener('mousedown', (event) =>{
+    if(event.target.id === 'Space') {
+      textarea.value += ' ';
+    }
+})

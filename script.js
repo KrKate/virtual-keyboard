@@ -56,7 +56,7 @@ const keyboardKeys = [
   ['Comma', ',', 'б'],
   ['Period', '.', 'ю'],
   ['Slash', '/', '.'],
-  ['ArrowUp', '&#9650;', '&#9650;'],
+  ['ArrowUp', '⇧', '⇧'],
   ['ShiftRight', 'Shift', 'Shift'],
 
   ['ControlLeft', 'Ctrl', 'Ctrl'],
@@ -64,9 +64,9 @@ const keyboardKeys = [
   ['AltLeft', 'Alt', 'Alt'],
   ['Space', 'Space', 'Space'],
   ['AltRight', 'Alt', 'Alt'],
-  ['ArrowLeft', '&#9668;', '&#9668;'],
-  ['ArrowDown', '&#9660;', '&#9660'],
-  ['ArrowRight', '&#9658;', '&#9658;'],
+  ['ArrowLeft', '⇦', '⇦'],
+  ['ArrowDown', '⇩', '⇩'],
+  ['ArrowRight', '⇨', '⇨'],
   ['ControlRight', 'Ctrl', 'Ctrl']
 
 ];

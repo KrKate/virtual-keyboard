@@ -237,11 +237,9 @@ document.addEventListener('keydown', (event) =>{
   }
 });
 
-function deleteSumbol() {
+function deleteSumbolBefore() {
   const start = textarea.selectionStart;
   const end = textarea.selectionEnd;
-  // console.log(start)
-  // console.log(end)
   if (start === end) {
     if (start > 0) {
       textarea.value = textarea.value.substring(0, start - 1) + textarea.value.slice(end);
@@ -255,10 +253,19 @@ function deleteSumbol() {
   }
 }
 
+function deleteSumbolAfter() {
+  const start = textarea.selectionStart;
+  let textBeforeCursor = textarea.value.substring(0, start);
+  let textAfterCursor = textarea.value.substring(start + 1);
+  textarea.value = textBeforeCursor + textAfterCursor;
+  textarea.selectionStart = start;
+  textarea.selectionEnd = start;
+}
+
 // Нажатие мышкой виртуального Backspace и Del. Работает с кареткой в любом месте! Ура!!!
 document.addEventListener('mousedown', (event) =>{
-  if (event.target.id === 'Backspace' || event.target.id === 'Delete') {
-    deleteSumbol();
+  if (event.target.id === 'Backspace') {
+    deleteSumbolBefore();
   }
 });
 
@@ -266,22 +273,22 @@ document.addEventListener('mousedown', (event) =>{
 document.addEventListener('keydown', (event) =>{
   if (event.code === 'Backspace') {
     document.querySelector('#Backspace').classList.add('active');
-    deleteSumbol();
+    deleteSumbolBefore();
   }
 });
 
 // Нажатие мышкой виртуального Del
-// document.addEventListener('mousedown', (event) =>{
-//   if (event.target.id === 'Delete') {
-//     deleteSumbol()
-//   }
-// });
+document.addEventListener('mousedown', (event) =>{
+  if (event.target.id === 'Delete') {
+    deleteSumbolAfter();
+  }
+});
 
 // Нажатие Del на реальной клавиатуре
 document.addEventListener('keydown', (event) =>{
   if (event.code === 'Delete') {
     document.querySelector('#Delete').classList.add('active');
-    deleteSumbol();
+    deleteSumbolAfter();
   }
 });
 

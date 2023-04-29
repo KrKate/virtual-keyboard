@@ -161,11 +161,15 @@ createKeyboard();
 // Связываю нажатие на реальной клавиатуре с нажатием на виртуальной клавиатуре
 document.addEventListener('keydown', (event) => {
   for (let i = 0; i < keyboardKeys.length; i += 1) {
-    event.preventDefault();
+    if(event.code !== 'Win') {
+      event.preventDefault();
+    }
     if (event.code === keyboardKeys[i][0]
       && event.code !== 'Tab'
       && event.code !== 'Space'
-      && event.code !== 'Backspace') {
+      && event.code !== 'Backspace'
+      && event.code !== 'Delete'
+      && event.code !== 'Enter') {
       const button = keyboardKeys[i][0].toLowerCase().replace('key', 'key-');
       document.querySelector(`.${button}`).classList.add('active');
       textarea.value += keyboardKeys[i][1];
@@ -193,7 +197,10 @@ document.addEventListener('mousedown', (event) =>{
     if (event.target.id === keyboardKeys[i][0]
       && event.target.id !== 'Space'
       && event.target.id !== 'Tab'
-      && event.target.id !== 'Backspace') {
+      && event.target.id !== 'Backspace'
+      && event.target.id !== 'Delete'
+      && event.target.id !== 'Enter'
+      && event.target.id !== 'Win') {
       textarea.value += keyboardKeys[i][1];
     }
   }
@@ -242,5 +249,35 @@ document.addEventListener('keydown', (event) =>{
   if (event.code === 'Backspace') {
     textarea.value = textarea.value.substring(0, textarea.value.length - 1);
     document.querySelector('#Backspace').classList.add('active');
+  }
+});
+
+// Нажатие мышкой виртуального Del
+document.addEventListener('mousedown', (event) =>{
+  if (event.target.id === 'Delete') {
+    textarea.value = textarea.value.substring(0, textarea.value.length - 1);
+  }
+});
+
+// Нажатие Del на реальной клавиатуре
+document.addEventListener('keydown', (event) =>{
+  if (event.code === 'Delete') {
+    textarea.value = textarea.value.substring(0, textarea.value.length - 1);
+    document.querySelector('#Delete').classList.add('active');
+  }
+});
+
+// Нажатие мышкой виртуального Enter
+document.addEventListener('mousedown', (event) =>{
+  if (event.target.id === 'Enter') {
+    textarea.value += `\n`;
+  }
+});
+
+// Нажатие Enter на реальной клавиатуре
+document.addEventListener('keydown', (event) =>{
+  if (event.code === 'Enter') {
+    textarea.value += `\n`;
+    document.querySelector('#Enter').classList.add('active');
   }
 });

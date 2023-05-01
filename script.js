@@ -432,7 +432,7 @@ document.addEventListener('keydown', (event) => {
       const key = document.querySelector(`#${keyboardKeys[i][0]}`);
       if (currentLang === 'en') {
         key.innerHTML = keyboardKeys[i][3];
-      } else key.innerHTML = keyboardKeys[i][4];
+      } else key.innerHTML = keyboardKeys[i][4] 
     }
   }
 });
@@ -470,12 +470,3 @@ document.addEventListener('mouseup', (event) => {
   }
 });
 
-// keyItem.forEach(key => 
-//   key.addEventListener('keydown',()=>{
-//     textarea.value += key.textContent
-//   }))
-
-// keyItem.forEach(key => 
-//   key.addEventListener('mousedown',()=>{
-//     textarea.value += key.textContent
-//   }))

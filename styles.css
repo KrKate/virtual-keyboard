@@ -1,0 +1,98 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
+  margin: 40px 0px;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background-color: #040b11;
+  margin: 4px;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 5px 2px #afdafb;
+}
+
+.key:active {
+  border-radius: 20px;
+  background-color: #476f93;
+  font-size: 20px;
+  box-shadow: none;
+}
+
+.key:hover {
+  background-color: #476f93;
+}
+
+.active {
+  border-radius: 20px;
+  background-color: #476f93;
+  font-size: 20px;
+  box-shadow: none;
+}
+
+.keyboard {
+  background-color: #00bfff;
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid #040b11;
+  max-width: 900px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.space {
+    width: 100px;
+}
+
+.textarea {
+  display: flex;
+  width: 890px;
+  height: 120px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.key.space {
+  width: 400px;
+}
+
+.key.capslock,
+.key.shiftright,
+.key.shiftleft,
+.key.enter {
+  width: 100px;
+}
+
+.key.backspace {
+  width: 120px;
+}
+
+.key.tab,
+.key.delete {
+   width: 60px;
+}
+
+.header {
+  font-size: 30px;
+}
+
+.footer {
+  font-size: 18px;
+}

@@ -186,7 +186,8 @@ function createKeyboard() {
 }
 createKeyboard();
 
-// Связываю нажатие на реальной клавиатуре с нажатием на виртуальной клавиатуре
+const keyItem = document.querySelectorAll('.key');
+//Связываю нажатие на реальной клавиатуре с нажатием на виртуальной клавиатуре
 document.addEventListener('keydown', (event) => {
   for (let i = 0; i < keyboardKeys.length; i += 1) {
     event.preventDefault();
@@ -225,28 +226,29 @@ document.addEventListener('keyup', (event) => {
 });
 
 // Связываю нажатие мышкой кнопок виртуальной клавиатуры с выводом символов в textarea
-document.addEventListener('mousedown', (event) => {
-  for (let i = 0; i < keyboardKeys.length; i += 1) {
-    if (event.target.id === keyboardKeys[i][0]
-      && event.target.id !== 'Space'
-      && event.target.id !== 'Tab'
-      && event.target.id !== 'Backspace'
-      && event.target.id !== 'Delete'
-      && event.target.id !== 'Enter'
-      && event.target.id !== 'MetaLeft'
-      && event.target.id !== 'ControlLeft'
-      && event.target.id !== 'ControlRight'
-      && event.target.id !== 'AltLeft'
-      && event.target.id !== 'AltRight'
-      && event.target.id !== 'CapsLock'
-      && event.target.id !== 'ShiftLeft'
-      && event.target.id !== 'ShiftRight') {
-      if (currentLang === 'en') {
-        textarea.value += keyboardKeys[i][1];
-      } else textarea.value += keyboardKeys[i][2];
+keyItem.forEach(key => {
+  key.addEventListener('mousedown', () => {
+    if (event.target.id !== 'Space'
+        && event.target.id !== 'Tab'
+        && event.target.id !== 'Backspace'
+        && event.target.id !== 'Delete'
+        && event.target.id !== 'Enter'
+        && event.target.id !== 'MetaLeft'
+        && event.target.id !== 'ControlLeft'
+        && event.target.id !== 'ControlRight'
+        && event.target.id !== 'AltLeft'
+        && event.target.id !== 'AltRight'
+        && event.target.id !== 'CapsLock'
+        && event.target.id !== 'ShiftLeft'
+        && event.target.id !== 'ShiftRight'
+        ) {
+      textarea.value +=key.textContent;
     }
-  }
-});
+  })
+})
+
+
+
 
 // Нажатие мышкой виртуального пробела
 document.addEventListener('mousedown', (event) => {

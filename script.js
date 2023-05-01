@@ -83,6 +83,7 @@ textarea.placeholder = '[ Hello! Enter something ]';
 textarea.autofocus = true;
 header.after(textarea);
 
+
 const keyboard = document.createElement('div');
 keyboard.className = 'keyboard';
 textarea.after(keyboard);
@@ -111,6 +112,8 @@ const footer = document.createElement('footer');
 footer.className = 'footer';
 footer.innerHTML = 'Клавиатура создана в операционной системе Windows<br>Для переключения языка комбинация: левые ctrl + alt';
 document.body.append(footer);
+
+
 
 let currentLang = 'en';
 
@@ -181,6 +184,7 @@ function createKeyboard() {
     key.id = id;
     key.innerHTML = keyboardKeys[i][localStorage.getItem('en') || localStorage.getItem('ru')];
   }
+  textarea.focus();
 }
 createKeyboard();
 
@@ -209,14 +213,15 @@ document.addEventListener('keydown', (event) => {
       } else textarea.value += keyboardKeys[i][2];
     }
   }
-  textarea.focus();
 });
 
 document.addEventListener('keyup', (event) => {
   for (let i = 0; i < keyboardKeys.length; i += 1) {
     if (event.code === keyboardKeys[i][0]) {
       const button = keyboardKeys[i][0].toLowerCase().replace('key', 'key-');
-      document.querySelector(`.${button}`).classList.remove('active');
+      if (event.code !== 'CapsLock') {
+         document.querySelector(`.${button}`).classList.remove('active');
+      }
     }
   }
 });
@@ -235,7 +240,7 @@ document.addEventListener('mousedown', (event) => {
       && event.target.id !== 'ControlRight'
       && event.target.id !== 'AltLeft'
       && event.target.id !== 'AltRight'
-      && event.target.id !== 'CapsLock'
+      // && event.target.id !== 'CapsLock'
       && event.target.id !== 'ShiftLeft'
       && event.target.id !== 'ShiftRight') {
       if (currentLang === 'en') {
@@ -375,11 +380,7 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'CapsLock') {
-    document.querySelector('#CapsLock').classList.add('active');
-  }
-});
+
 
 document.addEventListener('keydown', (event) => {
   if (event.code === 'ShiftLeft') {
@@ -392,3 +393,40 @@ document.addEventListener('keydown', (event) => {
     document.querySelector('#ShiftRight').classList.add('active');
   }
 });
+
+const keysArray = [...document.querySelectorAll('[class*="key-"], #Comma, #Period, #Semicolon, #Quote, #BracketLeft, #BracketRight')]
+let downCounter = 0;
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'CapsLock' && downCounter === 0) {
+    for (let i=0; i<keysArray.length; i++) {
+      keysArray[i].textContent = keysArray[i].innerHTML.toUpperCase()
+      document.querySelector('#CapsLock').classList.add('active');
+    }
+    downCounter +=1;
+  } else if (event.code === 'CapsLock' && downCounter === 1) {
+    for (let i=0; i<keysArray.length; i++) {
+      keysArray[i].textContent = keysArray[i].innerHTML.toLowerCase();
+      downCounter = 0;
+      document.querySelector('#CapsLock').classList.remove('active');
+    }
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (event.target.id === 'CapsLock' && downCounter === 0) {
+    for (let i=0; i<keysArray.length; i++) {
+      keysArray[i].textContent = keysArray[i].innerHTML.toUpperCase()
+      document.querySelector('#CapsLock').classList.add('active');
+      let capsLock = true;
+    }
+    downCounter +=1;
+  } else if (event.target.id === 'CapsLock' && downCounter === 1) {
+    for (let i=0; i<keysArray.length; i++) {
+      keysArray[i].textContent = keysArray[i].innerHTML.toLowerCase();
+      downCounter = 0;
+      document.querySelector('#CapsLock').classList.remove('active');
+      let capsLock = false;
+    }
+  }
+})
+
